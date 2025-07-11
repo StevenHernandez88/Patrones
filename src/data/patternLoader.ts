@@ -105,16 +105,12 @@ const patternDescriptions: { [key: string]: string } = {
 // Función para cargar los patrones desde el archivo JSON
 export const loadPatterns = async (): Promise<DesignPattern[]> => {
   try {
-    const response = await fetch('/public/data/patrones.json');
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    const data = await response.json();
+    // Importar el JSON directamente para que funcione en producción
+    const data = await import('./patrones.json');
+    const patronesData = data.default || data;
     
     // Verificar que el JSON tiene la estructura esperada
-    if (!data || typeof data !== 'object') {
+    if (!patronesData || typeof patronesData !== 'object') {
       console.warn('El archivo patrones.json no tiene la estructura esperada');
       return [];
     }
@@ -122,7 +118,7 @@ export const loadPatterns = async (): Promise<DesignPattern[]> => {
     const patterns: DesignPattern[] = [];
     
     // Iterar sobre cada patrón en el JSON
-    Object.entries(data).forEach(([patternKey, patternData]: [string, any]) => {
+    Object.entries(patronesData).forEach(([patternKey, patternData]: [string, any]) => {
       if (patternData && patternData.ejemplos && Array.isArray(patternData.ejemplos)) {
         const pattern: DesignPattern = {
           id: patternKey,
