@@ -25,7 +25,7 @@ export const PatternIllustration: React.FC<PatternIllustrationProps> = ({ patter
         const patternData = patronesData[pattern.id as keyof typeof patronesData];
         if (patternData && patternData.ejemplos) {
           const imageUrls = patternData.ejemplos.map((ejemplo: any) => 
-            `/img/${pattern.id}-${ejemplo.nombre}.png`
+            `./img/${pattern.id}-${ejemplo.nombre}.png`
           );
           const names = patternData.ejemplos.map((ejemplo: any) => ejemplo.nombre);
           setImages(imageUrls);
