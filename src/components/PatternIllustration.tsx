@@ -20,7 +20,7 @@ export const PatternIllustration: React.FC<PatternIllustrationProps> = ({ patter
       
       try {
         // Obtener los ejemplos del patrón desde el JSON
-        const response = await fetch('/src/data/patrones.json');
+        const response = await fetch('/public/data/patrones.json');
         const data = await response.json();
         
         const patternData = data[pattern.id];
