@@ -105,7 +105,7 @@ const patternDescriptions: { [key: string]: string } = {
 // Función para cargar los patrones desde el archivo JSON
 export const loadPatterns = async (): Promise<DesignPattern[]> => {
   try {
-    const response = await fetch('/src/data/patrones.json');
+    const response = await fetch('/public/data/patrones.json');
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
