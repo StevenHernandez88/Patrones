@@ -106,7 +106,7 @@ const patternDescriptions: { [key: string]: string } = {
 export const loadPatterns = async (): Promise<DesignPattern[]> => {
   try {
     // Importar el JSON directamente para que funcione en producción
-    const data = await import('./patrones.json');
+    const data = await import('/public/data/patrones.json');
     const patronesData = data.default || data;
     
     // Verificar que el JSON tiene la estructura esperada
